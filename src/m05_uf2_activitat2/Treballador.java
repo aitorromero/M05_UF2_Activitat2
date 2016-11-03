@@ -8,7 +8,9 @@ public class Treballador {
     private int nomina;
     private int horesExtra;
 
-    public void Treballador(int tipusTreballador, int nomina, int horesExtra) {
+
+
+    public Treballador(int tipusTreballador, int nomina, int horesExtra) {
         this.tipusTreballador=tipusTreballador;
         this.nomina=nomina;
         this.horesExtra=horesExtra;

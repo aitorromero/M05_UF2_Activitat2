@@ -3,7 +3,7 @@ package m05_uf2_activitat2;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class CostPersonal {
+public class CostPersonal extends DadesNoValidesException{
         /**
          * Declarem la clase treballador per a tal d'accedir als seus metodes.
          * Per a cada treballador de l'array treballadors[] l'hi atribuim un 
@@ -16,18 +16,24 @@ public class CostPersonal {
          * @param treballadors
          * @return 
          */
-	static float CostDelPersonal(Treballador treballadors[]) {
+	public float CostDelPersonal(Treballador treballadors[]) throws DadesNoValidesException {
 		float costFinal = 0;
 		Treballador treballador;
 		
 		for (int i = 0; i < treballadors.length; i++) {
 			treballador = treballadors[i];
 			
-			if (treballador.getTipusTreballador() == Treballador.DIRECTOR ||treballador.getTipusTreballador() == Treballador.SUBDIRECTOR) {
+                        if(treballador.getNomina()<0 || treballador.getHoresExtres()<0){
+                            throw new DadesNoValidesException();
+                        }
+			if (treballador.getTipusTreballador() == Treballador.DIRECTOR ||
+                                treballador.getTipusTreballador() == Treballador.SUBDIRECTOR) {
 				costFinal = costFinal + treballador.getNomina();
-			} else {
+			} else if(treballador.getTipusTreballador()>1){
 				costFinal = costFinal + treballador.getNomina() + (treballador.getHoresExtres() * 20);
-			}
+			}else{
+                            throw new DadesNoValidesException();
+                        }
 		}
 		return costFinal;
 	}
