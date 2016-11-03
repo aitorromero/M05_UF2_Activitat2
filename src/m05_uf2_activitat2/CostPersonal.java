@@ -18,23 +18,35 @@ public class CostPersonal extends DadesNoValidesException{
          */
 	public float CostDelPersonal(Treballador treballadors[]) throws DadesNoValidesException {
 		float costFinal = 0;
-		Treballador treballador;
-		
+                Treballador treballador;
+
 		for (int i = 0; i < treballadors.length; i++) {
 			treballador = treballadors[i];
-			
+			int tipusTreballador = treballador.getTipusTreballador();
                         if(treballador.getNomina()<0 || treballador.getHoresExtres()<0){
                             throw new DadesNoValidesException();
                         }
-			if (treballador.getTipusTreballador() == Treballador.DIRECTOR ||
-                                treballador.getTipusTreballador() == Treballador.SUBDIRECTOR) {
-				costFinal = costFinal + treballador.getNomina();
+			if (treballadorExistent(tipusTreballador)) {
+                                costFinal = calcularCostFinal(treballador.getNomina(), costFinal);
 			} else if(treballador.getTipusTreballador()>1){
-				costFinal = costFinal + treballador.getNomina() + (treballador.getHoresExtres() * 20);
+                                costFinal = calcularCostFinal(treballador.getNomina(), treballador.getHoresExtres(), costFinal);
 			}else{
                             throw new DadesNoValidesException();
                         }
 		}
 		return costFinal;
 	}
+        
+        public float calcularCostFinal(int nomina, int horesExtra, float costFinal){
+            final int preuHora=20;
+            return costFinal += nomina + (horesExtra*preuHora);
+        }
+        
+        public float calcularCostFinal(int nomina, float costFinal){
+            return  costFinal += nomina;
+        }
+        
+        public boolean treballadorExistent(int tipusTreb){
+            return(tipusTreb == Treballador.DIRECTOR || tipusTreb == Treballador.SUBDIRECTOR);
+        }
 }

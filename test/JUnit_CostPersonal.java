@@ -80,6 +80,36 @@ public class JUnit_CostPersonal {
             
         }
     }
+    
+    @Test
+    public final void testCalcularCostFinal() throws DadesNoValidesException{
+        
+        try{
+            assertEquals(3200, cp.calcularCostFinal(1500, 10, 1500),0);
+        }catch(Exception e){
+            
+        }
+    }
+    
+    @Test
+    public final void testCalcularCostFinal1() throws DadesNoValidesException{
+           
+        try{
+            assertEquals(4000, cp.calcularCostFinal(2000, 2000), 0);
+        }catch(Exception e){
+            
+        }
+    }
+    
+    @Test
+    public final void testTreballadorExistent() throws DadesNoValidesException{
+    
+        try{
+            assertEquals(true, cp.treballadorExistent(1));
+        }catch(Exception e){
+            
+        }
+    }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
