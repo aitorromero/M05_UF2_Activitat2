@@ -39,12 +39,22 @@ public class Nif {
     
         }
     }
+    /**
+     * Comprovem que la cadena sigui mes petita que 8 o mes gran que 9.
+     * @param nif
+     * @return 
+     */
     public boolean longitudCadena(int nif){
         int longitudCadena1=8;
         int longitudCadena2=9;
         return (nif < longitudCadena1 || nif > longitudCadena2);
     }
-    
+    /**
+     * Compreovem que la lletra estigui dins de la cadena de caracters.
+     * @param num
+     * @param letra
+     * @return 
+     */
     public boolean comprobarLetraDni (int num, String letra){
         
         return (String.valueOf(llista[num % llista.length]).equals(letra));
