@@ -27,7 +27,7 @@ public class Nif {
             try {
                 num = Integer.parseInt(numero);
 
-                if (comprobarLetraDni()) {
+                if (comprobarLetraDni(num, letra)) {
                     missatge =  "Nif Vàlid";
                 } else {
                     missatge = "Nif Invàlid";
@@ -47,7 +47,7 @@ public class Nif {
     
     public boolean comprobarLetraDni (int num, String letra){
         
-        return (String.valueOf(llista[num % 23]).equals(letra));
+        return (String.valueOf(llista[num % llista.length]).equals(letra));
     }
 
 }
