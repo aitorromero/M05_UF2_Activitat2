@@ -1,8 +1,8 @@
 package Herencia;
 
 public class SoldadoRaso extends Treballador{
-int horesExtra;
-final int precioHoras = 20;
+    int horesExtra;
+    final int precioHoras = 20;
 
     public SoldadoRaso(double salario, int horesExtra) {
         super(salario);

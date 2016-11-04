@@ -8,7 +8,7 @@ public class MainClass {
         treb[1] = new Director(1600);
         treb[2] = new Subdirector(2000);
         
-        System.out.println(cp.calcularCostTreballadors(treb));
+        System.out.println(cp.costDelPersonal(treb));
         
     }
 }
